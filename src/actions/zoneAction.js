@@ -50,7 +50,7 @@ export const updateZone = (id, data) => async (dispatch) => {
 
         dispatch({
             type: UPDATE_ZONE,
-            payload: data,
+            payload: res.data,
         });
 
         return Promise.resolve(res.data);
@@ -68,7 +68,7 @@ export const deleteZone = (id) => async (dispatch) => {
             payload: res.data
 
         });
-
+        return Promise.resolve(res.data);
 
     } catch (err) {
         console.log(err);

@@ -17,23 +17,24 @@ const ZonesList = () => {
 
     useEffect(() => {
         dispatch(retrieveZones());
-
     }, [dispatch]);
+
 
     const DoDelete = (id) => {
 
-        dispatch(
-            deleteZone(id)
-        ).then(() => {
-            console.log(zone)
-            if(zone.success){
+        dispatch(deleteZone(id, dispatch)).then((res) => {
+
+       
+            if (res.success) {
                 alert('xóa thành công')
+            }else{
+                alert(res.message)
             }
-           
-          
         }).catch()
-        //  alert(id)
+
+
     }
+
     //   const onChangeSearchTitle = e => {
     //     const searchTitle = e.target.value;
     //     setSearchTitle(searchTitle);
@@ -53,11 +54,11 @@ const ZonesList = () => {
 
     return (
         <ol className="row">
-
             {
+
                 zone.data.map((item, index) => (
-                    <li className="col-lg-6 text-left" key={index} ><a href={"product/" + item.shortURL}> {item.name} </a>
-                        <a href={"zone/edit/" + item.id}>Sửa</a> -  <a href="#" onClick={() => DoDelete(5555)} >Xóa</a>
+                    <li className="col-lg-6 text-left" key={index} ><a href={"product/" + item.shortURL}> {item.name} </a>      
+                        <a className="small text-info ml-3" href={"zone/edit/" + item.id}>Sửa</a> <small>/</small> <a className="text-danger small" href="#" onClick={() => DoDelete(item.id)} >Xóa</a>
                     </li>
                 ))
             }
