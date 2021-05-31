@@ -9,7 +9,7 @@ const Home = () => {
         <div className="container">Home page
             <Counter />
             <div className="row">
-                <h2 className="text-center">Zone</h2>
+                <h2 className="text-center">Zone</h2>  <a className="small text-info ml-3" href="zone/add">Thêm +</a>
                 <ZonesList />
             </div>
 

@@ -4,6 +4,7 @@ import {
     UPDATE_ZONE,
     DELETE_ZONE,
     DELETE_ALL_ZONES,
+    GET_ZONE
 } from '../actions/types';
 
 //const initialState = [];
@@ -24,6 +25,8 @@ const zoneReducer = (result = initialState, action) => {
             return [...result, payload];
 
         case RETRIEVE_ZONES:
+            return { ...result, data: payload.data, loading: false }
+        case GET_ZONE:
             return { ...result, data: payload.data, loading: false }
 
         case UPDATE_ZONE:

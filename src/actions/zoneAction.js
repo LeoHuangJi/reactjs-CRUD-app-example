@@ -3,6 +3,7 @@ import {
     RETRIEVE_ZONES,
     UPDATE_ZONE,
     DELETE_ZONE,
+    GET_ZONE,
     DELETE_ALL_ZONES,
 } from './types';
 
@@ -25,13 +26,7 @@ export const createZone = (payload) => async (dispatch) => {
 
 export const retrieveZones = () => async (dispatch) => {
     try {
-        // await zoneService.getAll().then(d => {
-        //     dispatch({
-        //         type: RETRIEVE_ZONES,
-        //         payload: d.data
-        //     });
-        // });
-
+        
 
         const res = await zoneService.getAll();
         console.log(res)
@@ -65,6 +60,21 @@ export const deleteZone = (id) => async (dispatch) => {
 
         dispatch({
             type: DELETE_ZONE,
+            payload: res.data
+
+        });
+        return Promise.resolve(res.data);
+
+    } catch (err) {
+        console.log(err);
+    }
+};
+export const getZone = (id) => async (dispatch) => {
+    try {
+        const res = await zoneService.get(id);
+
+        dispatch({
+            type: GET_ZONE,
             payload: res.data
 
         });
